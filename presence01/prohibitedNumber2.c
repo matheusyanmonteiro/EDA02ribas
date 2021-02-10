@@ -41,20 +41,17 @@ void mergesort(int *V, int l, int r) {
   merge(V, l, half, r);
 }
 
-int binary_search(int *V, int begin, int end, int item){
-  int i = ( begin + end ) / 2;
-
-  if (begin > end) 
-    return -1;
-  
-  if (V[i] == item) 
-    return i;
-  
-  if (V[i] < item )
-    return binary_search( V, i + 1, end, item );
-  
-  else 
-    return binary_search( V, i - 1, end, item );
+int binary_search(int *v,int n, int x){
+    int e,d,m;
+    e=-1;
+    d=n;
+    while(e<d-1){
+        m=(e+d)/2;
+        if (v[m]==x) return m;
+        if(v[m]<x)e=m;
+        else d=m;
+    }
+    return d;
 }
 
 int main() {
@@ -68,21 +65,18 @@ int main() {
     for( int i = 0; i < total_number; i++ ) {
       scanf("%d", &vector_prohibited[i]);
     }
-    mergesort(vector_prohibited, 0, total_number);
+    mergesort(vector_prohibited, 0, total_number - 1);
 
-     for( int i = 0; i < total_number; i++ ) {
-      printf("%d ", vector_prohibited[i]);
-    }
-    printf("teste\n");
-    /*while( scanf("%d", &element) != EOF ) {
-      var = binary_search(vector_prohibited, 0, total_number, element);
-      if(var == -1){
+    //printf("%d teeste\n", binary_search(vector_prohibited, total_number, 5 ));
+
+    while( scanf("%d", &element) != EOF ) {
+      var = binary_search(vector_prohibited, total_number, element);
+      if(vector_prohibited[var] != element){
         printf("nao\n");
       }else{
         printf("sim\n");
       }
       var = 0;
     }
-    */
   return 0;
 }
