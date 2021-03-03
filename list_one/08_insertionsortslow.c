@@ -11,7 +11,7 @@
 void insertionsortslow( int *pointer, int l, int r ) {
     for( int i = l + 1; i <= r; i++)
       for(int j = i; j > l; j--)
-        cmpexch( pointer[j-1], pointer[j]);
+        cmpexch(pointer[j-1], pointer[j]);
 }
 
 //Main 
@@ -26,7 +26,7 @@ int main() {
         right++;
     }
 
-    insertionsortslow( vector, left, right );
+    insertionsortslow( vector, left, right-1 );
 
     for(int i = 0; i < right; i++){
         if(i == 0)
